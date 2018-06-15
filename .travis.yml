@@ -16,8 +16,8 @@ android:
     - sys-img-armeabi-v7a-android-19
     - sys-img-armeabi-v7a-android-21
 
-env:
-  matrix:
+matrix:
+  include:
     - env:
       - ANDROID_TARGET=android-16
       - ANDROID_ABI=armeabi-v7a
@@ -30,7 +30,9 @@ env:
     - env:
       - ANDROID_TARGET=android-21
       - ANDROID_ABI=armeabi-v7a
-      script: bundle exec maze-runner -c
+    - script: bundle exec maze-runner -c
+
+env:
   global:
     - ADB_INSTALL_TIMEOUT=5 # increase from default of 2 mins
 
