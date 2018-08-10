@@ -19,7 +19,7 @@ repositories {
     jcenter()
 }
 ext {
-    supportLibVersion = "27.0.0"
+    supportLibVersion = "27.1.1"
     supportTestVersion = "0.5"
     espressoVersion = "2.2.2"
     junitVersion = "4.12"
