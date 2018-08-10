@@ -4,6 +4,8 @@ import android.os.StrictMode;
 import android.support.annotation.NonNull;
 
 import java.lang.Thread.UncaughtExceptionHandler;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.WeakHashMap;
 
@@ -83,11 +85,14 @@ class ExceptionHandler implements UncaughtExceptionHandler {
             } else {
 
                 Throwable current = throwable;
-                while (current != null) {
+                List<Throwable> list = new ArrayList<>();
+                while (current != null && !list.contains(current)) {
+                    list.add(current);
+
                     client.cacheAndNotify(current, Severity.ERROR,
                         metaData, severityReason, violationDesc);
 
-                    current = throwable.getCause();
+                    current = current.getCause();
                 }
             }
         }
