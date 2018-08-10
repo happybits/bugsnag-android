@@ -1,10 +1,15 @@
 apply plugin: 'com.android.library'
 
+repositories {
+    google()
+    jcenter()
+}
+
 buildscript {
     repositories {
-        mavenLocal()
         google()
         jcenter()
+        mavenLocal()
     }
     dependencies {
         classpath 'com.bugsnag:bugsnag-android-gradle-plugin:3.1.0'
