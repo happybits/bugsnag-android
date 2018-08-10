@@ -1,1 +1,1 @@
-include ':sdk'
+include ':example', ':sdk', ':examplelib', ':mazerunner'
