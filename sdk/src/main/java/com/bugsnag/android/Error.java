@@ -339,6 +339,12 @@ public class Error implements JsonStream.Streamable {
     }
 
     /**
+     * Sets the {@linkplain Throwable exception} for this Error report.
+     * Used for walking the exception chain and skipping superfluous wrapper exceptions.
+     */
+    public void setException(Throwable throwable) { exception = throwable; }
+
+    /**
      * Sets the device ID. This can be set to null for privacy concerns.
      *
      * @param id the device id
