@@ -45,9 +45,9 @@ public class Error implements JsonStream.Streamable {
     @NonNull
     final Configuration config;
     private final String[] projectPackages;
-    private final Exceptions exceptions;
+    private Exceptions exceptions;
     private Breadcrumbs breadcrumbs;
-    private final Throwable exception;
+    private Throwable exception;
     private final HandledState handledState;
     private final Session session;
     private final ThreadState threadState;
@@ -342,7 +342,10 @@ public class Error implements JsonStream.Streamable {
      * Sets the {@linkplain Throwable exception} for this Error report.
      * Used for walking the exception chain and skipping superfluous wrapper exceptions.
      */
-    public void setException(Throwable throwable) { exception = throwable; }
+    public void setException(Throwable throwable) {
+        exception = throwable;
+        exceptions = new Exceptions(config, exception);
+    }
 
     /**
      * Sets the device ID. This can be set to null for privacy concerns.
